@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TechMan</title>
+
+  <!-- ✅ Vue 3 CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <!-- ✅ Basic styling -->
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    nav {
+      background: #222;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 15px;
+      text-decoration: none;
+    }
+
+    .hero {
+      height: 80vh;
+      background: linear-gradient(to right, #007BFF, #00C6FF);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .section {
+      padding: 50px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+
+    <!-- ✅ NAVBAR -->
+    <nav>
+      <h2>{{ brand }}</h2>
+
+      <div>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+      </div>
+    </nav>
+
+    <!-- ✅ HERO -->
+    <section id="home" class="hero">
+      <div>
+        <h1>{{ title }}</h1>
+        <p>{{ tagline }}</p>
+      </div>
+    </section>
+
+    <!-- ✅ ABOUT -->
+    <section id="about" class="section">
+      <h2>About Us</h2>
+      <p>{{ about }}</p>
+    </section>
+
+    <!-- ✅ SERVICES -->
+    <section id="services" class="section">
+      <h2>Our Services</h2>
+
+      <div v-for="service in services" :key="service.title">
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.description }}</p>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          brand: "TechMan",
+
+          title: "Welcome to TechMan Repairs",
+          tagline: "Here we will help fix your electronic friends easily and help you learn to take care of them!",
+
+          about: "We are a small company that wants to help everyone learn how to take care of their electronics. We believe that if you are able to use it, you can care for it!",
+
+          services: [
+            {
+              title: "Tech Repairs",
+              description: "Need something repaired? Have no fear! TechMan is here!"
+            },
+            {
+              title: "Beginners Course",
+              description: "New to taking care of technology? Let us teach you the basics!"
+            },
+            {
+              title: "Advanced Course",
+              description: "On your way to being tech savvy? Let us help you strengthen those skills!"
+            }
+          ]
+        };
+      }
+    }).mount("#app");
+  </script>
+
+</body>
+</html>
